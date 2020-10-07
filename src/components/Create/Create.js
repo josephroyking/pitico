@@ -418,7 +418,7 @@ const Create = () => {
     const { tokenName, tokenSymbol, documentUri, amount, decimals, fixedSupply } = data;
 
     try {
-      const docUri = documentUri || "mint.bitcoin.com";
+      const docUri = documentUri || "bitcoincash.org";
       const link = await createToken(wallet, {
         name: tokenName,
         symbol: tokenSymbol,

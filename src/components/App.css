@@ -54,12 +54,12 @@ aside::-webkit-scrollbar-thumb {
 }
 
 .App-link {
-  color: #09d3ac;
+  color: #f59332;
 }
 .ant-menu-item-group-title {
-  color: rgba(255, 255, 255, 0.45) !important;
+  color: #f59332 !important;
   padding-left: 30px;
-  font-size: 10px !important;
+  font-size: 20px !important;
   font-weight: 500 !important;
 }
 
@@ -71,7 +71,7 @@ aside::-webkit-scrollbar-thumb {
 .ant-card-actions > li > span:hover,
 .ant-btn:hover,
 .ant-btn:focus {
-  color: #6e6e6e;
+  color: #f59332;
   transition: color 0.3s;
   background-color: white;
 }
@@ -187,7 +187,7 @@ input.ant-input {
 }
 
 .ant-menu-item.ant-menu-item-selected > * {
-  color: #5daa7e !important;
+  color: #f59332 !important;
 }
 
 .ant-menu-item.ant-menu-item-selected {
@@ -227,6 +227,14 @@ input.ant-input {
 
 .ant-alert-message {
   color: #fff;
+}
+
+.ant-layout-sider {
+  background: #4d4d4d;
+}
+.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub {
+  background: #4d4d4d;
 }
 
 .ant-layout-sider-zero-width-trigger.ant-layout-sider-zero-width-trigger-left

@@ -1,5 +1,12 @@
 # Changelog - Bitcoin.com Mint
 
+## Oct 7, 2020
+
+- Modify manifest to build unpacked Chrome extension to `/build` folder
+- Removed Bitcoin.com specific features and branding
+- Removed SatoshiDice and gambling functionality
+- Working title "CashTab"
+
 ## Oct 5, 2020
 
 - Add new feature: Satoshi Dice

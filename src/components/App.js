@@ -10,11 +10,10 @@ import Create from "./Create/Create";
 import Dividends from "./Dividends/Dividends";
 import Configure from "./Configure/Configure";
 import Audit from "./Audit/Audit";
-import SatoshiDice from "./SatoshiDice/SatoshiDice";
 import NotFound from "./NotFound";
 import "./App.css";
 import { WalletContext } from "../utils/context";
-import logo from "../assets/logo.png";
+import logo from "../assets/cashtab.png";
 import { Route, Redirect, Link, Switch, useLocation, useHistory } from "react-router-dom";
 import { QRCode } from "./Common/QRCode";
 import DividendHistory from "./DividendHistory/DividendHistory";
@@ -49,27 +48,27 @@ const StyledTabsMenu = styled.div`
   }
 
   .ant-tabs-tab:hover {
-    color: #4ab290 !important;
+    color: #f59332 !important;
     .anticon {
-      color: #4ab290;
+      color: #f59332;
     }
   }
 
   .ant-tabs-tab-active.ant-tabs-tab {
-    color: #4ab290;
+    color: #f59332;
     .anticon {
-      color: #4ab290;
+      color: #f59332;
     }
   }
 
   .ant-tabs-tab-active.ant-tabs-tab {
-    color: #4ab290;
+    color: #f59332;
     .anticon {
-      color: #4ab290;
+      color: #f59332;
     }
   }
   .ant-tabs-tab-active:active {
-    color: #4ab290 !important;
+    color: #f59332 !important;
   }
   .ant-tabs-ink-bar {
     display: none !important;
@@ -83,9 +82,8 @@ const StyledTabsMenu = styled.div`
 const App = () => {
   const [collapsed, setCollapsed] = React.useState(window.innerWidth < 768);
   const [mobile, setMobile] = React.useState(false);
-  const [address, setAddress] = React.useState("slpAddress");
+  const [address, setAddress] = React.useState("cashAddress");
   const [pixelRatio, setPixelRatio] = React.useState(1);
-  const [isCountryBanned, setIsCountryBanned] = React.useState(false);
 
   const ContextValue = React.useContext(WalletContext);
   const { wallet } = ContextValue;
@@ -115,29 +113,6 @@ const App = () => {
 
   const handleClickTrigger = e => (document.body.style.overflow = "hidden");
 
-  const checkIsCountryBanned = async () => {
-    const bannedCountries = ["United States"];
-    let isBanned = false;
-    try {
-      const result = await fetch(
-        `https://cors-anywhere.herokuapp.com/https://api.ipify.org/?format=json`
-      );
-      const { ip } = await result.json();
-
-      console.log(`IP Fetching from ipify`, ip);
-      const ipData = await fetch(
-        `https://cors-anywhere.herokuapp.com/http://api.ipstack.com/${ip}?access_key=${process.env.REACT_APP_IPSTACK_KEY}`
-      );
-      const { country_name } = await ipData.json();
-      if (bannedCountries.includes(country_name) || typeof country_name == 'undefined') {
-        setIsCountryBanned(true);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    return isBanned;
-  };
-
   React.useEffect(() => {
     if (mobile && pixelRatio === 1) {
       const triggerElement = document.getElementsByTagName("aside")[0].children[1];
@@ -153,7 +128,7 @@ const App = () => {
   React.useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
-    checkIsCountryBanned(setIsCountryBanned);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -216,11 +191,10 @@ const App = () => {
             }
           >
             <div className="logo">
-              <img src={logo} alt="Bitcoin.com Mint" />
+              <img src={logo} alt="CashTab" />
             </div>
             <div
               style={{
-                background: "rgba(0, 0, 0, 0.5)",
                 width: "100%",
                 height: "1px",
                 marginBottom: "26px",
@@ -261,11 +235,7 @@ const App = () => {
                 <Menu.Item key="audit">
                   <Link to="/audit">Audit</Link>
                 </Menu.Item>
-                {!isCountryBanned && wallet && (
-                  <Menu.Item key="satoshi-dice">
-                    <Link to="/satoshi-dice">Satoshi Dice</Link>
-                  </Menu.Item>
-                )}
+
                 <Menu.SubMenu key="links" title={<span>Links</span>}>
                   <Menu.Item key="link-trade-locally">
                     {" "}
@@ -327,7 +297,7 @@ const App = () => {
                     </div>
 
                     <Radio.Group
-                      defaultValue="slpAddress"
+                      defaultValue="cashAddress"
                       value={address}
                       size="small"
                       buttonStyle="solid"
@@ -339,10 +309,10 @@ const App = () => {
                           height: "40px",
                           width: "103px"
                         }}
-                        value="slpAddress"
+                        value="cashAddress"
                         onClick={e => handleChangeAddress(e)}
                       >
-                        SLP Tokens
+                        Bitcoin Cash
                       </Radio.Button>
                       <Radio.Button
                         style={{
@@ -350,10 +320,10 @@ const App = () => {
                           height: "40px",
                           width: "103px"
                         }}
-                        value="cashAddress"
+                        value="slpAddress"
                         onClick={e => handleChangeAddress(e)}
                       >
-                        Bitcoin Cash
+                        SLP Tokens
                       </Radio.Button>
                     </Radio.Group>
                   </div>
@@ -401,11 +371,7 @@ const App = () => {
                 <Route path="/audit">
                   <Audit />
                 </Route>
-                {!isCountryBanned && (
-                  <Route path="/satoshi-dice">
-                    <SatoshiDice />
-                  </Route>
-                )}
+
                 <Route path="/pay-dividends">
                   <Dividends />
                 </Route>

@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .ant-modal-body {
-	font-family: "Gilroy", sans-serif;
+	font-family: Ubuntu, sans-serif;
         padding: 0 !important;
         background-color: transparent;
     }
@@ -109,7 +109,7 @@ export const StyledModal = styled(Modal)`
   .anticon {
     vertical-align: middle;
   }
-  font-family: "Gilroy", sans-serif;
+  font-family: Ubuntu, sans-serif;
 
   ${StyledEnhancedCard} {
     .ant-list-item-meta-description > :first-child {

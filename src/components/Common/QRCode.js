@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import RawQRCode from "qrcode.react";
-import slpLogo from "../../assets/slp-logo-2.png";
-import bchLogo from "../../assets/bch-icon-qrcode.png";
+import slpLogo from "../../assets/simple-ledger-protocol-logo.png";
+import bchLogo from "../../assets/12-bitcoin-cash-square-crop.svg";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Input, Button } from "antd";
 
@@ -87,7 +87,9 @@ export const QRCode = ({ address, size = 210, onClick = () => null, ...otherProp
           style={{
             position: "absolute",
             zIndex: "2",
-            display: visible ? null : "none"
+            display: visible ? null : "none",
+            backgroundColor: "#F59332",
+            color: "#fff"
           }}
           rows="1"
           readOnly
@@ -119,9 +121,9 @@ export const QRCode = ({ address, size = 210, onClick = () => null, ...otherProp
             src: address && address.includes("bitcoin") ? bchLogo : slpLogo,
             x: null,
             y: null,
-            height: 42,
-            width: 42,
-            excavate: false
+            height: 32,
+            width: 32,
+            excavate: true
           }}
         />
 
