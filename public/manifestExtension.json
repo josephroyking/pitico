@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "CashTab",
+  "description": "A cross browser BCH wallet",
+  "version": "0.0.1",
+
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "CashTab"
+  },
+  "icons": {
+    "16": "bch16.png",
+    "48": "bch48.png",
+    "128": "bch128.png"
+  },
+  "permissions": ["storage"],
+  "content_security_policy": "script-src 'self' 'sha256-iAZAtuaIOnVc5ckay8UxHJhCGUGtK9Hi1+nhiWPO88A='; object-src 'self'"
+}
